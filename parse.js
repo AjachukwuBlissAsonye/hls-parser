@@ -483,9 +483,10 @@ function parseSegment(lines, uri, start, end, mediaSequenceNumber, discontinuity
       if (!Number.isInteger(value.duration) && params.compatibleVersion < 3) {
         params.compatibleVersion = 3;
       }
-      if (Math.round(value.duration) > params.targetDuration) {
-        utils.INVALIDPLAYLIST('EXTINF duration, when rounded to the nearest integer, MUST be less than or equal to the target duration');
-      }
+      //Temporary Fix for EXTINF error.
+      // if (Math.round(value.duration) > params.targetDuration) {
+      //   utils.INVALIDPLAYLIST('EXTINF duration, when rounded to the nearest integer, MUST be less than or equal to the target duration');
+      // }
       segment.duration = value.duration;
       segment.title = value.title;
     } else if (name === 'EXT-X-BYTERANGE') {
